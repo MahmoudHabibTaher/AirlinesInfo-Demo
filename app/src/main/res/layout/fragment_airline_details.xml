@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/airline_logo_image_view"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/airline_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/airline_logo_image_view"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/black"
+        tools:text="Aegean Airlines S.A."/>
+
+    <TextView
+        android:id="@+id/airline_phone_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/airline_name_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:autoLink="phone"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/black"
+        tools:text="123456789"/>
+
+    <TextView
+        android:id="@+id/airline_website_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/airline_phone_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearance"
+        android:textColor="@color/black"
+        tools:text="http://www.google.com"/>
+
+    <fr.castorflex.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/airline_favorite_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fabMargin"
+        app:backgroundTint="@color/colorAccent"
+        app:backgroundTintMode="src_in"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_favorite_normal_white"
+        />
+</RelativeLayout>

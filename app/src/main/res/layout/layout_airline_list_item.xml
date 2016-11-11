@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/default_item_background"
+                android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/airline_logo_image_view"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@null"/>
+
+    <TextView
+        android:id="@+id/airline_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/airline_logo_image_view"
+        android:layout_toLeftOf="@+id/airline_favorite_image_view"
+        android:layout_toRightOf="@+id/airline_logo_image_view"
+        android:layout_toStartOf="@+id/airline_favorite_image_view"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/black"
+        tools:text="Aegean Airlines S.A."/>
+
+    <ImageView
+        android:id="@+id/airline_favorite_image_view"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@null"
+        android:scaleType="center"
+        app:srcCompat="@drawable/ic_favorite_normal"/>
+</RelativeLayout>
