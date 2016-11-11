@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -56,6 +57,7 @@ public class AirlinesListFragment extends Fragment
 
     private AirlinesListContract.Presenter mPresenter;
 
+    private Filter mFitler = Filter.ALL;
     private String mQuery = null;
 
     @Override
@@ -80,6 +82,26 @@ public class AirlinesListFragment extends Fragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.fragment_airlines_list_menu, menu);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mQuery = query;
+                mPresenter.setFilter(mQuery, mFitler);
+                mPresenter.loadAirlines(false);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mQuery = newText;
+                mPresenter.setFilter(mQuery, mFitler);
+                mPresenter.loadAirlines(false);
+                return false;
+            }
+        });
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -99,12 +121,14 @@ public class AirlinesListFragment extends Fragment
     }
 
     private void onFilterAllSelected() {
-        mPresenter.setFilter(mQuery, Filter.ALL);
+        mFitler = Filter.ALL;
+        mPresenter.setFilter(mQuery, mFitler);
         mPresenter.loadAirlines(false);
     }
 
     private void onFilterFavoritesSelected() {
-        mPresenter.setFilter(mQuery, Filter.FAVORITE);
+        mFitler = Filter.FAVORITE;
+        mPresenter.setFilter(mQuery, mFitler);
         mPresenter.loadAirlines(false);
     }
 

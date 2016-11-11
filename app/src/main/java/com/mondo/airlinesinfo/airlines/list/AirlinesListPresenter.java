@@ -77,6 +77,13 @@ public class AirlinesListPresenter implements AirlinesListContract.Presenter {
                                 default:
                                     return true;
                             }
+                        }).filter(airline -> {
+                            if (mQuery != null) {
+                                return airline.getName().toLowerCase().contains(
+                                        mQuery.toLowerCase());
+                            } else {
+                                return true;
+                            }
                         })
                         .toList()).subscribe(
                         airlines -> mView.showAirlines(airlines),
