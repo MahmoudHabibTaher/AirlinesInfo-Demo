@@ -2,15 +2,14 @@ package com.mondo.airlinesinfo.airlines.list;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 
 import com.mondo.airlinesinfo.airlines.data.Airline;
 import com.mondo.airlinesinfo.airlines.data.source.AirlineRepository;
-import com.mondo.airlinesinfo.utils.LogUtils;
+import com.mondo.airlinesinfo.utils.schedulers.BaseSchedulersProvider;
 
 import rx.Observable;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -24,18 +23,24 @@ public class AirlinesListPresenter implements AirlinesListContract.Presenter {
 
     private AirlinesListContract.View mView;
 
-    private CompositeSubscription mSubscriptions;
+    private BaseSchedulersProvider mSchedulersProvider;
+
+    @VisibleForTesting
+    CompositeSubscription mSubscriptions;
 
     private Filter mFilter = Filter.ALL;
     private String mQuery = null;
 
-    private boolean mFirstLoad = true;
+    @VisibleForTesting
+    boolean mFirstLoad = true;
 
     public AirlinesListPresenter(@NonNull AirlineRepository repository,
-                                 @NonNull AirlinesListContract.View view) {
+                                 @NonNull AirlinesListContract.View view, @NonNull
+                                         BaseSchedulersProvider schedulersProvider) {
         mAirlineRepository = repository;
         mView = view;
         mView.setPresenter(this);
+        mSchedulersProvider = schedulersProvider;
     }
 
     @Override
@@ -65,10 +70,14 @@ public class AirlinesListPresenter implements AirlinesListContract.Presenter {
             mView.setLoadingIndicator(true);
         }
 
+        if (mSubscriptions == null) {
+            mSubscriptions = new CompositeSubscription();
+        }
+
         mSubscriptions.clear();
         Subscription subscription = mAirlineRepository.getAirlines().subscribeOn(
-                Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread()).flatMap(airlines -> Observable
+                mSchedulersProvider.io())
+                .observeOn(mSchedulersProvider.ui()).flatMap(airlines -> Observable
                         .from(airlines)
                         .filter(airline -> {
                             switch (mFilter) {
@@ -86,9 +95,15 @@ public class AirlinesListPresenter implements AirlinesListContract.Presenter {
                             }
                         })
                         .toList()).subscribe(
-                        airlines -> mView.showAirlines(airlines),
+                        airlines -> {
+                            if (!airlines.isEmpty()) {
+                                mView.showAirlines(airlines);
+                            } else {
+                                mView.showNoAirlinesAvailable();
+                            }
+                        },
                         throwable -> {
-                            LogUtils.e(TAG, "Error Getting Airlines", throwable);
+//                            LogUtils.e(TAG, "Error Getting Airlines", throwable);
                             mView.showLoadingAirlinesError();
                         },
                         () -> mView.setLoadingIndicator(false));

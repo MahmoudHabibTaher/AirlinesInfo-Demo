@@ -23,9 +23,11 @@ public interface AirlinesListContract {
 
         void showAirlineRemovedFromFavorites(@NonNull Airline airline);
 
+        void showNoAirlinesAvailable();
+
         void showLoadingAirlinesError();
 
-        void showAirlineDetailsUi(@NonNull String code,@NonNull String name);
+        void showAirlineDetailsUi(@NonNull String code, @NonNull String name);
     }
 
     interface Presenter extends BasePresenter {

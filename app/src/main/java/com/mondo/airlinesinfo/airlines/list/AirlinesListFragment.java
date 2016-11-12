@@ -57,7 +57,7 @@ public class AirlinesListFragment extends Fragment
 
     private AirlinesListContract.Presenter mPresenter;
 
-    private Filter mFitler = Filter.ALL;
+    private Filter mFilter = Filter.ALL;
     private String mQuery = null;
 
     @Override
@@ -88,7 +88,7 @@ public class AirlinesListFragment extends Fragment
             @Override
             public boolean onQueryTextSubmit(String query) {
                 mQuery = query;
-                mPresenter.setFilter(mQuery, mFitler);
+                mPresenter.setFilter(mQuery, mFilter);
                 mPresenter.loadAirlines(false);
                 return true;
             }
@@ -96,7 +96,7 @@ public class AirlinesListFragment extends Fragment
             @Override
             public boolean onQueryTextChange(String newText) {
                 mQuery = newText;
-                mPresenter.setFilter(mQuery, mFitler);
+                mPresenter.setFilter(mQuery, mFilter);
                 mPresenter.loadAirlines(false);
                 return false;
             }
@@ -121,14 +121,14 @@ public class AirlinesListFragment extends Fragment
     }
 
     private void onFilterAllSelected() {
-        mFitler = Filter.ALL;
-        mPresenter.setFilter(mQuery, mFitler);
+        mFilter = Filter.ALL;
+        mPresenter.setFilter(mQuery, mFilter);
         mPresenter.loadAirlines(false);
     }
 
     private void onFilterFavoritesSelected() {
-        mFitler = Filter.FAVORITE;
-        mPresenter.setFilter(mQuery, mFitler);
+        mFilter = Filter.FAVORITE;
+        mPresenter.setFilter(mQuery, mFilter);
         mPresenter.loadAirlines(false);
     }
 
@@ -181,6 +181,9 @@ public class AirlinesListFragment extends Fragment
         mAirlinesAdapter.notifyDataSetChanged();
 
         mAirlinesRecyclerView.setVisibility(View.VISIBLE);
+
+        mNoAirlinesFoundView.setVisibility(View.GONE);
+        mLoadingAirlinesFailedView.setVisibility(View.GONE);
     }
 
     @Override
@@ -196,8 +199,15 @@ public class AirlinesListFragment extends Fragment
     }
 
     @Override
-    public void showLoadingAirlinesError() {
+    public void showNoAirlinesAvailable() {
+        mNoAirlinesFoundView.setVisibility(View.VISIBLE);
+        mAirlinesRecyclerView.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void showLoadingAirlinesError() {
+        mLoadingAirlinesFailedView.setVisibility(View.VISIBLE);
+        mAirlinesRecyclerView.setVisibility(View.GONE);
     }
 
     @Override
