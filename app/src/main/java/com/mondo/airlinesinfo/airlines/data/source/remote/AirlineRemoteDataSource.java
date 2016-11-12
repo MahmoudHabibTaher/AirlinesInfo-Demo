@@ -62,22 +62,25 @@ public class AirlineRemoteDataSource implements AirlineDataSource {
 
     @Override
     public Observable<Airline> getAirline(@NonNull String code) {
-        // Not implemented handled by AirlineLocalDataStore
-        return null;
+        // Not implemented
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void addToFavorites(@NonNull Airline airline) {
-        // Not implemented handled by AirlineRepository
+        // Not implemented
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void removeFromFavorites(@NonNull Airline airline) {
-        // Not implemented handled by AirlineRepository
+        // Not implemented
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void refreshAirlines() {
-
+        // Not implemented
+        throw new UnsupportedOperationException();
     }
 }

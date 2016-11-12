@@ -96,9 +96,8 @@ public class AirlineLocalDataSource implements AirlineDataSource {
 
             realm.beginTransaction();
 
-            airline.setFavorite(true);
             AirlineHelper.update(airline.getCode(), airline.getName(), airline.getLogo(), airline
-                    .getPhone(), airline.getWebsite(), airline.isFavorite(), realm);
+                    .getPhone(), airline.getWebsite(), true, realm);
 
             realm.commitTransaction();
 
@@ -119,7 +118,7 @@ public class AirlineLocalDataSource implements AirlineDataSource {
 
             airline.setFavorite(false);
             AirlineHelper.update(airline.getCode(), airline.getName(), airline.getLogo(), airline
-                    .getPhone(), airline.getWebsite(), airline.isFavorite(), realm);
+                    .getPhone(), airline.getWebsite(), false, realm);
 
             realm.commitTransaction();
 
@@ -129,30 +128,24 @@ public class AirlineLocalDataSource implements AirlineDataSource {
                 subscriber.onCompleted();
             }
         }).subscribe();
-        ;
     }
 
     @Override
     public void refreshAirlines() {
         // Not implemented handled by AirlineRepository
+        throw new UnsupportedOperationException();
     }
 
     public void saveAirline(Airline airline) {
-        Observable.create(subscriber -> {
-            Realm realm = Realm.getDefaultInstance();
+        Realm realm = Realm.getDefaultInstance();
 
-            realm.beginTransaction();
+        realm.beginTransaction();
 
-            AirlineHelper.save(airline.getCode(), airline.getName(), airline.getLogo(), airline
-                    .getPhone(), airline.getWebsite(), realm);
+        AirlineHelper.save(airline.getCode(), airline.getName(), airline.getLogo(), airline
+                .getPhone(), airline.getWebsite(), realm);
 
-            realm.commitTransaction();
+        realm.commitTransaction();
 
-            realm.close();
-
-            if (!subscriber.isUnsubscribed()) {
-                subscriber.onCompleted();
-            }
-        }).subscribe();
+        realm.close();
     }
 }

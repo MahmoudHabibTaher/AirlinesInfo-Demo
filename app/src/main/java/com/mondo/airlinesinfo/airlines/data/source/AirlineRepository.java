@@ -61,10 +61,9 @@ public class AirlineRepository implements AirlineDataSource {
     private Observable<List<Airline>> getRemoteAirlines() {
         return mRemoteDataSource.getAirlines().doOnNext(
                 airlines -> Collections.sort(airlines, new AirlineNameComparator())).flatMap
-                (airlines ->
-                        Observable.from
-                                (airlines)
-                                .doOnNext(this::saveAirline).toList()).doOnCompleted(
+                (airlines -> Observable.from
+                        (airlines)
+                        .doOnNext(this::saveAirline).toList()).doOnCompleted(
                 () -> mCacheIsDirty = false);
     }
 
