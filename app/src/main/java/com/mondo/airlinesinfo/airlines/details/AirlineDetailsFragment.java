@@ -114,6 +114,16 @@ public class AirlineDetailsFragment extends Fragment implements AirlineDetailsCo
     }
 
     @Override
+    public void showAirlineNotFound() {
+
+    }
+
+    @Override
+    public void showErrorLoadingAirline() {
+
+    }
+
+    @Override
     public void showAirlineAddedToFavorites(@NonNull Airline airline) {
         Toast.makeText(getContext(), getString(R.string.added_to_favorites_toast_text), Toast
                 .LENGTH_SHORT).show();

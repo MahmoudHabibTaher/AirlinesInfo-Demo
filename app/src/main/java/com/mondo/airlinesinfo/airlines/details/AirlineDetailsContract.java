@@ -16,6 +16,10 @@ public interface AirlineDetailsContract {
 
         void showAirline(@NonNull Airline airline);
 
+        void showAirlineNotFound();
+
+        void showErrorLoadingAirline();
+
         void showAirlineAddedToFavorites(@NonNull Airline airline);
 
         void showAirlineRemovedFromFavorites(@NonNull Airline airline);

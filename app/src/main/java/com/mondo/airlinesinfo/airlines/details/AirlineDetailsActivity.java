@@ -12,6 +12,7 @@ import com.mondo.airlinesinfo.R;
 import com.mondo.airlinesinfo.airlines.data.source.AirlineRepository;
 import com.mondo.airlinesinfo.airlines.data.source.local.AirlineLocalDataSource;
 import com.mondo.airlinesinfo.airlines.data.source.remote.AirlineRemoteDataSource;
+import com.mondo.airlinesinfo.utils.schedulers.SchedulersProvider;
 
 /**
  * Created by mahmoud on 11/10/16.
@@ -60,7 +61,8 @@ public class AirlineDetailsActivity extends BaseActivity {
 
             AirlineDetailsPresenter presenter = new AirlineDetailsPresenter(code, AirlineRepository
                     .getInstance(AirlineLocalDataSource.getInstance(),
-                            AirlineRemoteDataSource.getInstance()), airlineDetailsFragment);
+                            AirlineRemoteDataSource.getInstance()), airlineDetailsFragment,
+                    SchedulersProvider.getInstance());
         }
     }
 

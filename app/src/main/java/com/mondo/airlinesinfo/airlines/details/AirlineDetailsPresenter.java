@@ -1,13 +1,15 @@
 package com.mondo.airlinesinfo.airlines.details;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.VisibleForTesting;
 
 import com.mondo.airlinesinfo.airlines.data.Airline;
 import com.mondo.airlinesinfo.airlines.data.source.AirlineRepository;
+import com.mondo.airlinesinfo.utils.schedulers.BaseSchedulersProvider;
+
+import java.util.NoSuchElementException;
 
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -20,14 +22,19 @@ public class AirlineDetailsPresenter implements AirlineDetailsContract.Presenter
     private AirlineRepository mAirlineRepository;
     private AirlineDetailsContract.View mView;
 
-    private CompositeSubscription mSubscriptions;
+    private BaseSchedulersProvider mSchedulersProvider;
+
+    @VisibleForTesting
+    CompositeSubscription mSubscriptions;
 
     public AirlineDetailsPresenter(String airlineCode, AirlineRepository repository,
-                                   AirlineDetailsContract.View view) {
+                                   AirlineDetailsContract.View view,
+                                   BaseSchedulersProvider schedulersProvider) {
         mAirlineCode = airlineCode;
         mAirlineRepository = repository;
         mView = view;
         mView.setPresenter(this);
+        mSchedulersProvider = schedulersProvider;
     }
 
     @Override
@@ -45,14 +52,23 @@ public class AirlineDetailsPresenter implements AirlineDetailsContract.Presenter
     @Override
     public void loadAirline(@NonNull String code) {
         mView.setLoadingIndicator(true);
+
+        if (mSubscriptions == null) {
+            mSubscriptions = new CompositeSubscription();
+        }
+
         mSubscriptions.clear();
-        Subscription subscription = mAirlineRepository.getAirline(code).subscribeOn(Schedulers
-                .newThread()).observeOn(AndroidSchedulers.mainThread()).subscribe(airline -> {
+        Subscription subscription = mAirlineRepository.getAirline(code).subscribeOn
+                (mSchedulersProvider.io()).observeOn
+                (mSchedulersProvider.ui()).subscribe(airline -> {
             mView.showAirline(airline);
         }, throwable -> {
-        }, () -> {
-            mView.setLoadingIndicator(false);
-        });
+            if (throwable instanceof NoSuchElementException) {
+                mView.showAirlineNotFound();
+            } else {
+                mView.showErrorLoadingAirline();
+            }
+        }, () -> mView.setLoadingIndicator(false));
         mSubscriptions.add(subscription);
     }
 
