@@ -71,4 +71,25 @@
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_favorite_normal_white"
         />
+
+    <TextView
+        android:id="@+id/error_loading_airline_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/something_went_wrong_n_please_try_again"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/primary_text"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/airline_not_found_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_airlines_found_text"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/primary_text"
+        android:visibility="gone"/>
 </RelativeLayout>

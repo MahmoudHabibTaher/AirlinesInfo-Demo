@@ -46,9 +46,6 @@ public class AirlinesListFragment extends Fragment
     @BindView(R.id.loading_airlines_failed_view)
     View mLoadingAirlinesFailedView;
 
-    @BindView(R.id.no_favorite_airlines_view)
-    View mNoFavoriteAirlinesView;
-
     @BindView(R.id.no_airlines_found_view)
     View mNoAirlinesFoundView;
 
@@ -171,6 +168,11 @@ public class AirlinesListFragment extends Fragment
         int visibility = (enabled ? View.VISIBLE : View.GONE);
 
         mLoadingProgressBar.setVisibility(visibility);
+        if (enabled) {
+            mNoAirlinesFoundView.setVisibility(View.GONE);
+            mAirlinesRecyclerView.setVisibility(View.GONE);
+            mLoadingAirlinesFailedView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -201,13 +203,17 @@ public class AirlinesListFragment extends Fragment
     @Override
     public void showNoAirlinesAvailable() {
         mNoAirlinesFoundView.setVisibility(View.VISIBLE);
+        mLoadingAirlinesFailedView.setVisibility(View.GONE);
         mAirlinesRecyclerView.setVisibility(View.GONE);
+        mLoadingProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void showLoadingAirlinesError() {
         mLoadingAirlinesFailedView.setVisibility(View.VISIBLE);
+        mNoAirlinesFoundView.setVisibility(View.GONE);
         mAirlinesRecyclerView.setVisibility(View.GONE);
+        mLoadingProgressBar.setVisibility(View.GONE);
     }
 
     @Override

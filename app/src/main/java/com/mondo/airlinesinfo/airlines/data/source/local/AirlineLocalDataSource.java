@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 import rx.Observable;
 
 /**
@@ -40,17 +39,12 @@ public class AirlineLocalDataSource implements AirlineDataSource {
 
             Realm realm = Realm.getDefaultInstance();
 
-            RealmResults<AirlineRealm> results = AirlineHelper.findAll(realm);
+            List<AirlineRealm> results = AirlineHelper.findAll(realm);
+
+            AirlineModelMapper mapper = new AirlineModelMapper();
 
             for (AirlineRealm airlineRealm : results) {
-                Airline airline = new Airline();
-                airline.setCode(airlineRealm.getCode());
-                airline.setName(airlineRealm.getName());
-                airline.setLogo(airlineRealm.getLogo());
-                airline.setPhone(airlineRealm.getPhone());
-                airline.setWebsite(airlineRealm.getWebsite());
-                airline.setFavorite(airlineRealm.isFavorite());
-                airlines.add(airline);
+                airlines.add(mapper.map(airlineRealm));
             }
 
             realm.close();
@@ -69,15 +63,11 @@ public class AirlineLocalDataSource implements AirlineDataSource {
 
             Realm realm = Realm.getDefaultInstance();
 
+            AirlineModelMapper mapper = new AirlineModelMapper();
+
             AirlineRealm airlineRealm = AirlineHelper.findByCode(code, realm);
             if (airlineRealm != null) {
-                airline = new Airline();
-                airline.setCode(airlineRealm.getCode());
-                airline.setName(airlineRealm.getName());
-                airline.setLogo(airlineRealm.getLogo());
-                airline.setPhone(airlineRealm.getPhone());
-                airline.setWebsite(airlineRealm.getWebsite());
-                airline.setFavorite(airlineRealm.isFavorite());
+                airline = mapper.map(airlineRealm);
             }
 
             realm.close();

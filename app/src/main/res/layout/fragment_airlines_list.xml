@@ -11,20 +11,26 @@
         android:layout_height="match_parent"
         android:visibility="visible"/>
 
-    <View
+    <TextView
         android:id="@+id/loading_airlines_failed_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/something_went_wrong_n_please_try_again"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/primary_text"
+        android:visibility="gone"/>
 
-    <View
-        android:id="@+id/no_favorite_airlines_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <View
+    <TextView
         android:id="@+id/no_airlines_found_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_airlines_found_text"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/primary_text"
+        android:visibility="gone"/>
 
     <fr.castorflex.android.circularprogressbar.CircularProgressBar
         android:id="@+id/progress_bar"

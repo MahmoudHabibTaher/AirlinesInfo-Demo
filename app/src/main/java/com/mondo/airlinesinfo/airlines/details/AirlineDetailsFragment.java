@@ -40,6 +40,12 @@ public class AirlineDetailsFragment extends Fragment implements AirlineDetailsCo
     @BindView(R.id.airline_website_text_view)
     TextView mAirlineWebsiteTextView;
 
+    @BindView(R.id.airline_not_found_view)
+    View mAirlineNotFoundView;
+
+    @BindView(R.id.error_loading_airline_view)
+    View mErrorLoadingAirlineView;
+
     @BindView(R.id.airline_favorite_fab)
     FloatingActionButton mAirlineFavoriteFab;
 
@@ -82,6 +88,11 @@ public class AirlineDetailsFragment extends Fragment implements AirlineDetailsCo
     public void setLoadingIndicator(boolean enabled) {
         int visibility = enabled ? View.VISIBLE : View.GONE;
         mProgressBar.setVisibility(visibility);
+
+        if (enabled) {
+            mAirlineNotFoundView.setVisibility(View.GONE);
+            mAirlineNotFoundView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -115,12 +126,16 @@ public class AirlineDetailsFragment extends Fragment implements AirlineDetailsCo
 
     @Override
     public void showAirlineNotFound() {
-
+        mAirlineNotFoundView.setVisibility(View.VISIBLE);
+        mErrorLoadingAirlineView.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void showErrorLoadingAirline() {
-
+        mErrorLoadingAirlineView.setVisibility(View.VISIBLE);
+        mAirlineNotFoundView.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override

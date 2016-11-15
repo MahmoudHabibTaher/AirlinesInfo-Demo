@@ -8,4 +8,6 @@
     <string name="search_menu_item_title">Search</string>
     <string name="filter_all_menu_item_title">All</string>
     <string name="filter_favorites_menu_item_title">Favorites</string>
+    <string name="no_airlines_found_text">No Airlines Found</string>
+    <string name="something_went_wrong_n_please_try_again">Something went wrong!\n Please try again.</string>
 </resources>
