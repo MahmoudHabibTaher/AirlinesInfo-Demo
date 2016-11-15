@@ -26,7 +26,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Created by mahmoud on 11/11/16.
  */
 
 public class AirlineRepositoryTest {

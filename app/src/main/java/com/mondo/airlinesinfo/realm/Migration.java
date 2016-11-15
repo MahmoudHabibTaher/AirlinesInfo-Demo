@@ -4,7 +4,7 @@ import io.realm.DynamicRealm;
 import io.realm.RealmMigration;
 
 /**
- * Created by mahmoud on 11/9/16.
+ *
  */
 
 public class Migration implements RealmMigration {

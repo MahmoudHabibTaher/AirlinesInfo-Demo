@@ -3,7 +3,7 @@ package com.mondo.airlinesinfo.airlines.data;
 import java.util.Comparator;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public class AirlineNameComparator implements Comparator<Airline> {

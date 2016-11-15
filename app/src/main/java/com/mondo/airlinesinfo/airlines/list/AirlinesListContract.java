@@ -10,7 +10,7 @@ import com.mondo.airlinesinfo.airlines.data.Airline;
 import java.util.List;
 
 /**
- * Created by mahmoud on 11/9/16.
+ *
  */
 
 public interface AirlinesListContract {

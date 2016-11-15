@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import io.realm.RealmObject;
 
 /**
- * Created by mahmoud on 11/14/16.
+ * Utility class to provide convenient method to convert RealmObjects to Non RealmObjects.
  */
 
 public interface BaseModelMapper<From extends RealmObject, To> {

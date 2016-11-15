@@ -4,7 +4,7 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by mahmoud on 11/9/16.
+ *
  */
 
 public class AirlineRealm extends RealmObject {

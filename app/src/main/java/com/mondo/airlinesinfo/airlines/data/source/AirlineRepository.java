@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 import rx.Observable;
 
 /**
- * Created by mahmoud on 11/8/16.
+ * AirlineDataSource implementation to get and save airlines from local and remote repositories.
  */
 
 public class AirlineRepository implements AirlineDataSource {

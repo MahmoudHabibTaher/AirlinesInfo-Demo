@@ -13,7 +13,7 @@ import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public class AirlineDetailsPresenter implements AirlineDetailsContract.Presenter {

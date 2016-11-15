@@ -6,7 +6,8 @@ import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by mahmoud on 11/12/16.
+ * Use this class to provide schedulers for testing which always return Scheduler.immediate() to
+ * run the subscribe code on the same thread.
  */
 
 public class TestSchedulersProvider implements BaseSchedulersProvider {

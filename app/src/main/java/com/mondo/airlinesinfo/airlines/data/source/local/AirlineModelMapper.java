@@ -6,7 +6,7 @@ import com.mondo.airlinesinfo.airlines.data.Airline;
 import com.mondo.airlinesinfo.realm.BaseModelMapper;
 
 /**
- * Created by mahmoud on 11/14/16.
+ * Implementation of BaseModelMapper to convert AirlineRealm to Airline.
  */
 
 public class AirlineModelMapper implements BaseModelMapper<AirlineRealm, Airline> {

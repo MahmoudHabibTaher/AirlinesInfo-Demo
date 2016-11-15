@@ -3,7 +3,7 @@ package com.mondo.airlinesinfo.airlines.data;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by mahmoud on 11/8/16.
+ *
  */
 
 public class Airline {

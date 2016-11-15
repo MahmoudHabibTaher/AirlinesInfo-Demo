@@ -9,7 +9,7 @@ import io.realm.Realm;
 import io.realm.Sort;
 
 /**
- * Created by mahmoud on 11/9/16.
+ * This class provides static methods to perform CRUD operations on AirlineRealm table.
  */
 
 public final class AirlineHelper {

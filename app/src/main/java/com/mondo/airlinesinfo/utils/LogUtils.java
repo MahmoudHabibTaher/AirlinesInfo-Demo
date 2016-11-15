@@ -6,7 +6,7 @@ import com.mondo.airlinesinfo.BuildConfig;
 
 
 /**
- * Created by mahmoudhabib on 3/15/16.
+ *
  */
 public final class LogUtils {
     private static final boolean DEBUG = BuildConfig.DEBUG;

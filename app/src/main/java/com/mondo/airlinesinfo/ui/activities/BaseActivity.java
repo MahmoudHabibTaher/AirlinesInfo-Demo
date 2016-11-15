@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import com.mondo.airlinesinfo.R;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public class BaseActivity extends AppCompatActivity {

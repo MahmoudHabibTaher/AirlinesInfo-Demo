@@ -7,7 +7,7 @@ import org.junit.Test;
 import static junit.framework.Assert.assertEquals;
 
 /**
- * Created by mahmoud on 11/15/16.
+ *
  */
 
 public class AirlineModelMapperTest {

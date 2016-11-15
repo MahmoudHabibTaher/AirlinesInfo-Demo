@@ -7,7 +7,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by mahmoud on 11/12/16.
+ *
  */
 
 public class SchedulersProvider implements BaseSchedulersProvider {

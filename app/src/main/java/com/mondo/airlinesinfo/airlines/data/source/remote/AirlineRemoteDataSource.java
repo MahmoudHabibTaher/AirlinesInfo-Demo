@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 
 /**
- * Created by mahmoud on 11/8/16.
+ * AirlineDataSource implementation to get airlines from remote repository.
  */
 
 public class AirlineRemoteDataSource implements AirlineDataSource {

@@ -5,9 +5,9 @@ import android.support.annotation.NonNull;
 import rx.Scheduler;
 
 /**
- * Created by mahmoud on 11/12/16.
+ * Implement this interface to provide Schedulers to be used with Observable.subscribeOn and
+ * Observable.observeOn methods.
  */
-
 public interface BaseSchedulersProvider {
     @NonNull
     Scheduler computation();

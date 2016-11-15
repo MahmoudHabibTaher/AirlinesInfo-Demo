@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by mahmoud on 11/9/16.
+ *
  */
 
 public class AirlinesAdapter extends RecyclerView.Adapter<AirlinesAdapter.AirlineViewHolder> {

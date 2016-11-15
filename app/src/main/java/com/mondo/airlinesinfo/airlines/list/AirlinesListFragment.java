@@ -30,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by mahmoud on 11/9/16.
+ *
  */
 
 public class AirlinesListFragment extends Fragment

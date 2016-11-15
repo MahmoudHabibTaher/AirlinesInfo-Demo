@@ -20,7 +20,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 /**
- * Created by mahmoud on 11/15/16.
+ *
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Realm.class, RealmQuery.class})

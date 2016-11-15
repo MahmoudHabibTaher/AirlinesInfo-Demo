@@ -21,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public class AirlineDetailsFragment extends Fragment implements AirlineDetailsContract.View {

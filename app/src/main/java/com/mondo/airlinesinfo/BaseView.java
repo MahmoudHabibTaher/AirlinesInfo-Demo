@@ -5,5 +5,9 @@ package com.mondo.airlinesinfo;
  */
 
 public interface BaseView<T> {
+    /**
+     * Used to set the presenter that will be used by this view.
+     * @param presenter
+     */
     void setPresenter(T presenter);
 }

@@ -12,7 +12,7 @@ import io.realm.Realm;
 import rx.Observable;
 
 /**
- * Created by mahmoud on 11/8/16.
+ * AirlineDataSource implementation to store and get airlines from local storage.
  */
 
 public class AirlineLocalDataSource implements AirlineDataSource {

@@ -15,7 +15,7 @@ import com.mondo.airlinesinfo.airlines.data.source.remote.AirlineRemoteDataSourc
 import com.mondo.airlinesinfo.utils.schedulers.SchedulersProvider;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public class AirlineDetailsActivity extends BaseActivity {

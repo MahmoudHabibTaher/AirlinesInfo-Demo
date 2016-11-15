@@ -7,7 +7,7 @@ import com.mondo.airlinesinfo.BaseView;
 import com.mondo.airlinesinfo.airlines.data.Airline;
 
 /**
- * Created by mahmoud on 11/10/16.
+ *
  */
 
 public interface AirlineDetailsContract {
